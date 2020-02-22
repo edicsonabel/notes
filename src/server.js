@@ -1,24 +1,36 @@
 const express = require('express')
 const path = require('path')
+const exphbs = require('express-handlebars')
 
-/* Initializations */
+/* INITIALIZATIONS */
 const app = express()
 
-/* Settings */
+/* SETTINGS */
 app.set('port', process.env.PORT || 3000)
+
 app.set('views', path.join(__dirname, './views'))
 
-/* Middlewares */
+app.engine('.hbs', exphbs({
+  /* Configuración para el uso de Handlebars */
+  defaultLayout: 'default',
+  layoutsDir: path.join(app.get('views'), './layouts'),
+  partialsDir: path.join(app.get('views'), './partials'),
+  extname: '.hbs'
+}))
+app.set('view engine', '.hbs')
+
+/* MIDDLEWARES */
 app.use(express.urlencoded({extended:false}))
 
-/* Global variables */
+/* GLOBAL VARIABLES */
 
-/* Routes */
+/* ROUTES */
 app.get('/', (req, res) =>{
-  res.send('Fuck World')
+  res.render('index')
 })
 
-/* Static files */
+/* STATIC FILES */
 app.use(express.static(path.join(__dirname, './public')))
 
+/* EXPORTS */
 module.exports = app
