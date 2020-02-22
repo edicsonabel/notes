@@ -6,13 +6,22 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- All Material Design Bootstrap -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/edicsonabel/mdbootstrap/css/all.min.css">
-  <title>Note App</title>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./css/style.css">
+
+  <title>Notes App</title>
 </head>
 <body>
 
-  {{{body}}}
+  {{>navigation}}
+
+  <div class="container p-5">
+    {{{body}}}
+  </div>
 
   <!-- All MDB core JavaScript -->
   <script src="https://cdn.jsdelivr.net/gh/edicsonabel/mdbootstrap/js/all.min.js"></script>
+  <!-- CUSTOM JS -->
+  <script src="./js/script.js"></script>
 </body>
 </html>
