@@ -20,7 +20,7 @@
 *.rar
 *.tar
 *.zip
- 
+
 ######################
 # OS generated files #
 ######################
@@ -42,3 +42,4 @@ node_modules
 ######################
 assets
 src/css-dev
+.env
