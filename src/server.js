@@ -2,6 +2,7 @@ const express = require('express')
 const path = require('path')
 const exphbs = require('express-handlebars')
 const morgan = require('morgan')
+const methodOverride = require('method-override')
 
 /* INITIALIZATIONS */
 const app = express()
@@ -23,6 +24,7 @@ app.set('view engine', '.hbs')
 /* MIDDLEWARES */
 app.use(express.urlencoded({extended:false}))
 app.use(morgan('dev'))
+app.use(methodOverride('_method'))
 
 /* GLOBAL VARIABLES */
 
