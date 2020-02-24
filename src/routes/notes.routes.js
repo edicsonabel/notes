@@ -15,6 +15,6 @@ router.post('/notes/new-note', createNewNote) // New Note
 router.get('/notes', renderNotes) // Get All Notes
 router.get('/notes/edit/:id', renderEditForm) // Form Edit Note
 router.put('/notes/edit/:id', updateNote) // Update Note
-router.delete('/notes/delete/:id', deleteNote)
+router.delete('/notes/delete/:id', deleteNote) // Delete Note
 
 module.exports = router
