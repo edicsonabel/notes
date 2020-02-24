@@ -3,6 +3,8 @@ const path = require('path')
 const exphbs = require('express-handlebars')
 const morgan = require('morgan')
 const methodOverride = require('method-override')
+const flash = require('connect-flash')
+const session = require('express-session')
 
 /* INITIALIZATIONS */
 const app = express()
@@ -25,12 +27,27 @@ app.set('view engine', '.hbs')
 app.use(express.urlencoded({extended:false}))
 app.use(morgan('dev'))
 app.use(methodOverride('_method'))
+app.use(session({
+  secret: 'ThatIsSecretSoShhhhhh',
+  reseve: true,
+  saveUninitialized: true
+}))
+app.use(flash())
 
 /* GLOBAL VARIABLES */
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg')
+  next()
+})
+app.use((req, res, next) => {
+  res.locals.error_msg = req.flash('error_msg')
+  next()
+})
 
 /* ROUTES */
 app.use(require('./routes/index.routes'))
 app.use(require('./routes/notes.routes'))
+app.use(require('./routes/users.routes'))
 
 /* STATIC FILES */
 app.use(express.static(path.join(__dirname, './public')))

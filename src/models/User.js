@@ -3,14 +3,14 @@ const bcrypt = require('bcryptjs')
 
 const UserSchema = new Schema({
   name: {type: String, require: true},
-  email: {type: String, require: true},
+  email: {type: String, require: true, unique: true},
   password:{type: String, require: true}
 },
 {
   timestamps: true
 })
 
-UserSchema.methods.encrypPassword = async pass => {
+UserSchema.methods.encryptPassword = async pass => {
   /* Esta función permite encriptar la contraseña del usuario */
 
   /* Se hace uso de bcrypt para generar un 'salt' de cifrado */
