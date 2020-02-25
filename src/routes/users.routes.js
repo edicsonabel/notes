@@ -13,6 +13,6 @@ router.get('/users/signup', renderSignUpForm) // SignUp Form
 router.post('/users/signup', signUp) // SignUp
 router.get('/users/signin', renderSignInForm) // SignIn Form
 router.post('/users/signin', signIn) // SignIn
-router.get('/users/signup', renderSignUpForm) // Logout
+router.get('/users/logout', logout) // Logout
 
 module.exports = router
