@@ -41,7 +41,7 @@ usersCtrl.signUp = async (req, res) =>{
   /* Cuando todo va OK */
 
     /* Consultamos si hay un email registrado */
-    const emailUser = await User.findOne({email})
+    const emailUser = await User.findOne({email}).lean()
 
     if (emailUser){
     /* Error cuando el email está registrado */
